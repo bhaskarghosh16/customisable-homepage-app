@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Homepage from "./Homepage.js"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Todo from "./components/Todo";
+import Tasks from "./components/Tasks";
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" component={Homepage} exact />
-          <Route path="/todo" component={Todo} exact />
+          <Route path="/todo" component={Tasks} exact />
           
         </Switch>
       </Router>

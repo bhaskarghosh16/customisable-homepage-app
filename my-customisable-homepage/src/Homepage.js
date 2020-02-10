@@ -12,7 +12,7 @@ import Nav from 'react-bootstrap/Nav'
 import Accordion from 'react-bootstrap/Accordion'
 import TGIFCard from "./components/TGIFCard";
 import FSCard from "./components/FSCard";
-import Todo from "./components/Todo"
+import Tasks from "./components/Tasks"
 
 
 class Homepage extends React.Component {
@@ -26,7 +26,7 @@ class Homepage extends React.Component {
         <Row>
           <Col><TGIFCard></TGIFCard></Col>
           <Col></Col>
-          <Col><Todo></Todo></Col>
+          <Col><Tasks></Tasks></Col>
       </Row>
       <Row>
           <Col></Col>

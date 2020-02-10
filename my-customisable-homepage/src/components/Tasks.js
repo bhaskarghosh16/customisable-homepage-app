@@ -4,11 +4,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 
 
 
-class Todo extends Component {
+class Tasks extends Component {
 
     constructor(props) {
         super(props)
@@ -25,7 +27,7 @@ class Todo extends Component {
             id: uuid.v4(),
             value: this.input.current.value,
             Date: new Date().toUTCString()
-        };
+         };
 
         if (localStorage.getItem('list') == null) {
             const list = []
@@ -39,7 +41,9 @@ class Todo extends Component {
         }
         this.setState({
             list: JSON.parse(localStorage.getItem('list'))
+            
         });
+        
     }
 
     componentDidMount() {
@@ -75,19 +79,22 @@ class Todo extends Component {
                 <Card.Header><center>Task Management</center></Card.Header>
                 <Card.Body>
                 <div>
-                        <Form.Group controlId="formBasic">
-
-                            <Form.Control type="text" placeholder="Task" ref={this.input} />
-                            <Button variant="primary" type="submit" onClick={this.addTask}>
-                            Add </Button>
-
-                        </Form.Group>
+                <Form.Group controlId="formBasic">
+                <Row>
+    <Col><Form.Control type="text" placeholder="Task" ref={this.input} /></Col>
+    <Col md="auto"><Button variant="primary" type="submit" onClick={this.addTask}>
+                            Add </Button></Col>
+    <Col xs lg="1">
+      &nbsp;
+    </Col>
+  </Row>
+ </Form.Group>
                        
                         <ol>
                             {
                                 this.state.list.map((item, index) => {
-                                    return (<li key={item.id}> {item.value} &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                                        <Button variant="danger" value="delete" data-key={index} onClick={this.deleteItem}> Delete</Button>
+                                    return (<li key={item.id}> {item.value} {item.Date.substring(1,17)} &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                                        <Button variant="danger" value="delete" data-key={index} onClick={this.deleteItem}> Delete</Button>  <hr/>
                                     </li>)
                                 })
                             }
@@ -105,4 +112,4 @@ class Todo extends Component {
     }
 }
 
-export default Todo
+export default Tasks
